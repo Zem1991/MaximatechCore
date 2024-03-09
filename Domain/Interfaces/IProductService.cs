@@ -9,10 +9,10 @@ namespace Domain.Interfaces
 {
     public interface IProductService
     {
-        Task<IEnumerable<ProductDto>> GetAllProductsAsync();
-        Task<ProductDto?> GetProductByIdAsync(int id);
-        Task<bool> CreateProductAsync(ProductDto product);
-        Task<bool> UpdateProductAsync(ProductDto product);
-        Task<bool> DeleteProductAsync(int id);
+        Task<IEnumerable<ProductDto>> GetAllAsync();
+        Task<ProductDto?> GetByIdAsync(int id);
+        Task<bool> CreateAsync(ProductDto product);
+        Task<bool> UpdateAsync(ProductDto product);
+        Task<bool> DeleteAsync(int id);
     }
 }

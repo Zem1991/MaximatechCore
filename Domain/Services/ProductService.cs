@@ -22,37 +22,37 @@ namespace Domain.Services
             _productRepository = productRepository;
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
+        public async Task<IEnumerable<ProductDto>> GetAllAsync()
         {
             IEnumerable<Product> result = await _productRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<ProductDto>>(result);
         }
 
-        public async Task<ProductDto?> GetProductByIdAsync(int id)
+        public async Task<ProductDto?> GetByIdAsync(int id)
         {
             Product? result = await _productRepository.GetByIdAsync(id);
             return _mapper.Map<ProductDto>(result);
         }
 
-        public async Task<bool> CreateProductAsync(ProductDto product)
+        public async Task<bool> CreateAsync(ProductDto product)
         {
             Product entity = _mapper.Map<ProductDto, Product>(product);
             bool result = await _productRepository.InsertAsync(entity);
             return result;
         }
 
-        public async Task<bool> UpdateProductAsync(ProductDto product)
+        public async Task<bool> UpdateAsync(ProductDto product)
         {
             Product entity = _mapper.Map<ProductDto, Product>(product);
             bool result = await _productRepository.UpdateAsync(entity);
             return result;
         }
 
-        public async Task<bool> DeleteProductAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             Product? entity = await _productRepository.GetByIdAsync(id);
             if (entity == null) return false;
-            bool result = await _productRepository.DeleteAsync(id);
+            bool result = await _productRepository.DeleteAsync(entity);
             return result;
         }
     }
