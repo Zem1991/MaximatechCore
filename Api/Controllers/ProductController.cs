@@ -20,7 +20,7 @@ namespace Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet()]
+        [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ProductDto>), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
@@ -46,7 +46,7 @@ namespace Api.Controllers
             return NotFound(message);
         }
 
-        [HttpPost()]
+        [HttpPost]
         [ProducesResponseType(typeof(bool), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
@@ -59,7 +59,7 @@ namespace Api.Controllers
             return NotFound(message);
         }
 
-        [HttpPut()]
+        [HttpPut]
         [ProducesResponseType(typeof(bool), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]

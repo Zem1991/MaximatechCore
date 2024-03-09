@@ -14,20 +14,20 @@ namespace Domain.Dtos
         public int Id { get; set; }
 
         [Required(ErrorMessage = "The Codigo is Required")]
-        [MinLength(3)]
-        [MaxLength(100)]
+        //[MinLength(3)]
+        //[MaxLength(100)]
         [DisplayName("Codigo")]
         public string Codigo { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "The Descricao is Required")]
-        [MinLength(5)]
-        [MaxLength(200)]
+        //[MinLength(5)]
+        //[MaxLength(200)]
         [DisplayName("Descricao")]
         public string Descricao { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "The Departamento is Required")]
-        [MinLength(5)]
-        [MaxLength(200)]
+        //[Required(ErrorMessage = "The Departamento is Required")]
+        //[MinLength(5)]
+        //[MaxLength(200)]
         [DisplayName("Departamento")]
         public string Departamento { get; set; } = string.Empty;
 
