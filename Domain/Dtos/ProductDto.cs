@@ -13,28 +13,33 @@ namespace Domain.Dtos
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "The Name is Required")]
+        [Required(ErrorMessage = "The Codigo is Required")]
         [MinLength(3)]
         [MaxLength(100)]
-        [DisplayName("Name")]
-        public string Name { get; set; } = string.Empty;
+        [DisplayName("Codigo")]
+        public string Codigo { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "The Description is Required")]
+        [Required(ErrorMessage = "The Descricao is Required")]
         [MinLength(5)]
         [MaxLength(200)]
-        [DisplayName("Description")]
-        public string Description { get; set; } = string.Empty;
+        [DisplayName("Descricao")]
+        public string Descricao { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "The Price is Required")]
+        [Required(ErrorMessage = "The Departamento is Required")]
+        [MinLength(5)]
+        [MaxLength(200)]
+        [DisplayName("Departamento")]
+        public string Departamento { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "The Preco is Required")]
         [Column(TypeName = "decimal(18,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]
-        [DisplayName("Price")]
-        public decimal Price { get; set; }
+        [DisplayName("Preco")]
+        public decimal Preco { get; set; }
 
-        [Required(ErrorMessage = "The Stock is Required")]
-        [Range(1, 9999)]
-        [DisplayName("Stock")]
-        public int Stock { get; set; }
+        [Required(ErrorMessage = "The Status is Required")]
+        [DisplayName("Status")]
+        public bool Status { get; set; }
     }
 }

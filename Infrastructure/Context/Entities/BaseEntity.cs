@@ -11,7 +11,7 @@ namespace Infrastructure.Context.Entities
     public class BaseEntity
     {
         [Key]
-        [Column("ID")]
+        [Column("Id")]
         public int Id { get; set; }
     }
 }

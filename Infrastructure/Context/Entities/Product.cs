@@ -10,13 +10,15 @@ namespace Infrastructure.Context.Entities
     [Table("PRODUCT")]
     public class Product : BaseEntity
     {
-        [Column("NAME")]
-        public string Name { get; set; } = string.Empty;
-        [Column("DESCRIPTION")]
-        public string Description { get; set; } = string.Empty;
-        [Column("PRICE")]
-        public decimal Price { get; set; }
-        [Column("STOCK")]
-        public int Stock { get; set; }
+        [Column("Codigo")]
+        public string Codigo { get; set; } = string.Empty;
+        [Column("Descricao")]
+        public string Descricao { get; set; } = string.Empty;
+        [Column("Departamento")]
+        public string Departamento { get; set; } = string.Empty;
+        [Column("Preco")]
+        public decimal Preco { get; set; }
+        [Column("Status")]
+        public bool Status { get; set; }
     }
 }
