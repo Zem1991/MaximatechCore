@@ -20,7 +20,8 @@ namespace Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetAllProducts")]
+        //[HttpGet("GetAllProducts")]
+        [HttpGet()]
         [ProducesResponseType(typeof(IEnumerable<ProductDto>), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
