@@ -27,10 +27,8 @@ namespace Api.Controllers
         [ProducesResponseType(500)]
         public async Task<ActionResult<IEnumerable<ProductDto>>> GetAllProducts()
         {
-            var result = await _service.GetAllProductsAsync();
-
-            if (result.Any()) return Ok(result);
-
+            IEnumerable<ProductDto> result = await _service.GetAllProductsAsync();
+            if (result != null) return Ok(result);
             _logger.LogInformation("Products not found");
             return NotFound("Products not found");
         }

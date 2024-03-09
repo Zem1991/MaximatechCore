@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Dtos;
 using Domain.Interfaces;
+using Infrastructure.Context.Entities;
 using Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,28 +24,36 @@ namespace Domain.Services
 
         public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
         {
-            var result = await _productRepository.GetAllAsync();
+            IEnumerable<Product> result = await _productRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<ProductDto>>(result);
         }
 
         public async Task<ProductDto?> GetProductByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            Product? result = await _productRepository.GetByIdAsync(id);
+            return _mapper.Map<ProductDto>(result);
         }
 
         public async Task<bool> CreateProductAsync(ProductDto product)
         {
-            throw new NotImplementedException();
+            Product entity = _mapper.Map<ProductDto, Product>(product);
+            bool result = await _productRepository.InsertAsync(entity);
+            return result;
         }
 
         public async Task<bool> UpdateProductAsync(ProductDto product)
         {
-            throw new NotImplementedException();
+            Product entity = _mapper.Map<ProductDto, Product>(product);
+            bool result = await _productRepository.UpdateAsync(entity);
+            return result;
         }
 
         public async Task<bool> DeleteProductAsync(int id)
         {
-            throw new NotImplementedException();
+            Product? entity = await _productRepository.GetByIdAsync(id);
+            if (entity == null) return false;
+            bool result = await _productRepository.DeleteAsync(id);
+            return result;
         }
     }
 }
