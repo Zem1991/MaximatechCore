@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F3CA59C7-7796-441C-A7AC-1DE67274FB3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTests", "ApiTests\ApiTests.csproj", "{74306C3B-D728-40A2-8CCE-62ED03B18F80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTests", "ApiTests\ApiTests.csproj", "{74306C3B-D728-40A2-8CCE-62ED03B18F80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "main", "main", "{68EF8022-D55C-45C2-9586-913C290960BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{77F18D6B-4B9C-45C4-A8C8-EAAA5307A10B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F53F9048-7A46-4802-AE45-6FEF3F831412} = {68EF8022-D55C-45C2-9586-913C290960BB}
+		{E7265CF3-94D2-4DAA-B2B3-84DDA7B6813C} = {68EF8022-D55C-45C2-9586-913C290960BB}
+		{F3CA59C7-7796-441C-A7AC-1DE67274FB3F} = {68EF8022-D55C-45C2-9586-913C290960BB}
+		{74306C3B-D728-40A2-8CCE-62ED03B18F80} = {77F18D6B-4B9C-45C4-A8C8-EAAA5307A10B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91A28305-30DF-475A-AA9D-28B39BFBD064}

@@ -18,6 +18,7 @@ namespace Infrastructure.Context
         { }
 
         public DbSet<Product> Product { get; set; } = null!;
+        public DbSet<Department> Department { get; set; } = null!;
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

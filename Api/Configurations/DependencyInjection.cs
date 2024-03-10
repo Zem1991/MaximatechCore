@@ -21,8 +21,10 @@ namespace Api.Configurations
                     )
                 );
 
+            services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IProductService, ProductService>();
 
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddAutoMapper(typeof(DomainToDtoMappingProfile));

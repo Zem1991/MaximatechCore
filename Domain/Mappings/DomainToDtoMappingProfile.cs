@@ -14,6 +14,7 @@ namespace Domain.Mappings
         public DomainToDtoMappingProfile()
         {
             CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Department, DepartmentDto>().ReverseMap();
         }
     }
 }
