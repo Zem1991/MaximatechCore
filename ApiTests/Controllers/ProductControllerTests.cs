@@ -20,12 +20,15 @@ namespace Api.Controllers.Tests
     [TestClass()]
     public class ProductControllerTests
     {
-        [TestMethod()]
-        public async Task GetAllAsyncTest()
+        private int initialDataAmount = 10;
+        private List<Product> initialData;
+        private IProductRepository repository;
+
+        [TestInitialize()]
+        public async Task Initialize()
         {
-            int amount = 1;
-            List<Product> data = GenerateData(amount);
-            IQueryable<Product> dataQueryable = data.AsQueryable();
+            initialData = GenerateData(initialDataAmount);
+            IQueryable<Product> dataQueryable = initialData.AsQueryable();
             Mock<DbSet<Product>> mockDbSet = new();
             mockDbSet.As<IQueryable>().Setup(m => m.Provider).Returns(dataQueryable.Provider);
             mockDbSet.As<IQueryable>().Setup(m => m.Expression).Returns(dataQueryable.Expression);
@@ -33,9 +36,37 @@ namespace Api.Controllers.Tests
             mockDbSet.As<IQueryable>().Setup(m => m.GetEnumerator()).Returns(dataQueryable.GetEnumerator);
             Mock<ApplicationDbContext> mockDbContext = new();
             mockDbContext.Setup(x => x.Set<Product>()).Returns(mockDbSet.Object);
-            IProductRepository repository = new ProductRepository(mockDbContext.Object);
-            Product toInsert = data.FirstOrDefault();
-            bool result = await repository.InsertAsync(toInsert);
+            repository = new ProductRepository(mockDbContext.Object);
+        }
+
+        [TestMethod()]
+        public async Task GetAllAsyncTest()
+        {
+            IEnumerable<Product> products = await repository.GetAllAsync();
+            products.Count().Should().Be(initialDataAmount);
+        }
+
+        [TestMethod()]
+        public async Task InsertAsyncTest()
+        {
+            Product data = GenerateData(1).First();
+            bool result = await repository.InsertAsync(data);
+            result.Should().BeTrue();
+        }
+
+        [TestMethod()]
+        public async Task UpdateAsyncTest()
+        {
+            Product data = GenerateData(1).First();
+            bool result = await repository.UpdateAsync(data);
+            result.Should().BeTrue();
+        }
+
+        [TestMethod()]
+        public async Task DeleteAsyncTest()
+        {
+            Product data = GenerateData(1).First();
+            bool result = await repository.DeleteAsync(data);
             result.Should().BeTrue();
         }
 

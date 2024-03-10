@@ -21,10 +21,15 @@ namespace Infrastructure.Repositories
             _entities = context.Set<T>();
         }
 
-        public virtual async Task<IEnumerable<T>> GetAllAsync() => await _entities.AsNoTracking().ToListAsync();
+        public virtual async Task<List<T>> GetAllAsync()
+        {
+            return await _entities.AsNoTracking().ToListAsync();
+        }
 
-        public virtual async Task<T?> GetByIdAsync(int? id) =>
-            await _entities.AsNoTracking().SingleOrDefaultAsync(s => s.Id == id);
+        public virtual async Task<T?> GetByIdAsync(int? id)
+        {
+            return await _entities.AsNoTracking().SingleOrDefaultAsync(s => s.Id == id);
+        }
 
         public virtual async Task<bool> InsertAsync(T entity)
         {
