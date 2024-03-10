@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Infrastructure.Context.Entities;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
+using FluentAssertions;
 
 namespace Api.Controllers.Tests
 {
@@ -20,7 +21,7 @@ namespace Api.Controllers.Tests
     public class ProductControllerTests
     {
         [TestMethod()]
-        public async void GetAllAsyncTest()
+        public async Task GetAllAsyncTest()
         {
             int amount = 1;
             List<Product> data = GenerateData(amount);
@@ -35,6 +36,7 @@ namespace Api.Controllers.Tests
             IProductRepository repository = new ProductRepository(mockDbContext.Object);
             Product toInsert = data.FirstOrDefault();
             bool result = await repository.InsertAsync(toInsert);
+            result.Should().BeTrue();
         }
 
         private List<Product> GenerateData(int count)
