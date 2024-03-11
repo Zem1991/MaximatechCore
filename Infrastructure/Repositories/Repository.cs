@@ -7,13 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastructure.Queries;
+using Npgsql;
 
 namespace Infrastructure.Repositories
 {
     public abstract class Repository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly ApplicationDbContext _context;
-        private readonly DbSet<T> _entities;
+        protected readonly ApplicationDbContext _context;
+        protected readonly DbSet<T> _entities;
 
         protected Repository(ApplicationDbContext context)
         {
@@ -56,6 +58,27 @@ namespace Infrastructure.Repositories
             _entities.Remove(entity);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        protected async Task<List<T>> CustomQuery(string connectionString, string queryString, Func<NpgsqlDataReader, List<T>> funcResult)
+        {
+            using (NpgsqlConnection connection = new(connectionString))
+            {
+                NpgsqlCommand command = new(queryString, connection);
+                //command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                connection.Open();
+                NpgsqlDataReader reader = await command.ExecuteReaderAsync();
+                try
+                {
+                    List<T> resultList = funcResult(reader);
+                    return resultList;
+                }
+                finally
+                {
+                    // Always call Close when done reading.
+                    reader.Close();
+                }
+            }
         }
     }
 }

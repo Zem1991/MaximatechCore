@@ -12,7 +12,7 @@ namespace Api.Configurations
     {
         public static void AddInfrastructureApi(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("TesteMaximatech");
+            string connectionString = configuration.GetConnectionString("TesteMaximatech");
 
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseNpgsql(
