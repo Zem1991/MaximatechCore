@@ -14,8 +14,8 @@ namespace Infrastructure.Context.Entities
         public string Codigo { get; set; } = string.Empty;
         [Column("Descricao")]
         public string Descricao { get; set; } = string.Empty;
-        [Column("Departamento")]
-        public string Departamento { get; set; } = string.Empty;
+        [Column("IdDepartamento")]
+        public int IdDepartamento { get; set; }
         [Column("Preco")]
         public decimal Preco { get; set; }
         [Column("Status")]

@@ -13,33 +13,33 @@ namespace Domain.Dtos
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "The Codigo is Required")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         //[MinLength(3)]
         //[MaxLength(100)]
-        [DisplayName("Codigo")]
+        [DisplayName("Código")]
         public string Codigo { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "The Descricao is Required")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         //[MinLength(5)]
         //[MaxLength(200)]
-        [DisplayName("Descricao")]
+        [DisplayName("Descrição")]
         public string Descricao { get; set; } = string.Empty;
 
-        //[Required(ErrorMessage = "The Departamento is Required")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         //[MinLength(5)]
         //[MaxLength(200)]
         [DisplayName("Departamento")]
-        public string Departamento { get; set; } = string.Empty;
+        public int IdDepartamento { get; set; }
 
-        [Required(ErrorMessage = "The Preco is Required")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         [Column(TypeName = "decimal(18,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]
-        [DisplayName("Preco")]
+        [DisplayName("Preço")]
         public decimal Preco { get; set; }
 
-        [Required(ErrorMessage = "The Status is Required")]
-        [DisplayName("Status")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
+        [DisplayName("Ativo?")]
         public bool Status { get; set; }
     }
 }
