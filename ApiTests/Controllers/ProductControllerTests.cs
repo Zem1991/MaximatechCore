@@ -14,6 +14,7 @@ using Infrastructure.Context.Entities;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
 using FluentAssertions;
+using Microsoft.Extensions.Configuration;
 
 namespace Api.Controllers.Tests
 {
@@ -36,7 +37,11 @@ namespace Api.Controllers.Tests
             mockDbSet.As<IQueryable>().Setup(m => m.GetEnumerator()).Returns(dataQueryable.GetEnumerator);
             Mock<ApplicationDbContext> mockDbContext = new();
             mockDbContext.Setup(x => x.Set<Product>()).Returns(mockDbSet.Object);
-            repository = new ProductRepository(mockDbContext.Object);
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                   .SetBasePath(Directory.GetCurrentDirectory())
+                   .AddJsonFile("appsettings.json")
+                   .Build();
+            repository = new ProductRepository(mockDbContext.Object, configuration);
         }
 
         [TestMethod()]
