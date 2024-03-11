@@ -16,6 +16,10 @@ namespace Infrastructure.Repositories
     {
         private string ConnectionString { get; } = string.Empty;
 
+        public ProductRepository(ApplicationDbContext context) : base(context)
+        {
+        }
+
         public ProductRepository(ApplicationDbContext context, IConfiguration configuration) : base(context)
         {
             ConnectionString = configuration.GetConnectionString("TesteMaximatech");

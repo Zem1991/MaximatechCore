@@ -1,25 +1,23 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Api.Controllers;
+using Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Dtos;
-using Bogus;
-using Infrastructure.Context;
-using Moq;
-using Microsoft.EntityFrameworkCore;
 using Infrastructure.Context.Entities;
+using Infrastructure.Context;
 using Infrastructure.Interfaces;
-using Infrastructure.Repositories;
-using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using FluentAssertions;
+using Moq;
+using Bogus;
 
-namespace Api.Controllers.Tests
+namespace Infrastructure.Repositories.Tests
 {
     [TestClass()]
-    public class ProductControllerTests
+    public class ProductRepositoryTests
     {
         private int initialDataAmount = 10;
         private List<Product> initialData;
